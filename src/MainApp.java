@@ -32,10 +32,6 @@ public class MainApp {
 						}
 					}while(readingError);
 					break;
-				case 3:
-					break;
-				case 0:
-					break;
 			}
 			option = showMenu();
 		}
