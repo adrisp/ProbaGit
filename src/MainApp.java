@@ -4,6 +4,8 @@ public class MainApp {
 
 	private static User arrayUsers[] = new User[10];
 	private static int numUsers = 0;
+	private static int numCursos = 0;
+	private static Curso arrayCurso[] = new Curso[10];
 	/**
 	 * Main function
 	 * @param args
@@ -18,25 +20,19 @@ public class MainApp {
 					numUsers++;
 					break;
 				case 2:
-					boolean readingError;
-					do{ 
-						System.out.println("Which user? (insert array index)");
-						BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
-						try{
-							int index = Integer.parseInt(buffer.readLine());
-							modifyUser(arrayUsers[index]);
-							readingError = false;
-						}catch(Exception e){
-							System.out.println("There is no user in the given index");
-							readingError = true;
-						}
-					}while(readingError);
+					for(int i=0;i<numUsers;i++){
+						arrayUsers[i] = null;
+					}
 					break;
 				case 3:
+					Curso c = addNewCurso();
+					arrayCurso[numCursos] = c;					
+					numCursos++;
 					break;
-				case 4: System.out.println("Curso añadido");
-					break;
-				case 5:	System.out.println("Curso borrado");
+				case 4: 
+					for(int i=0;i<numCursos;i++){
+						arrayCurso[i] = null;
+					}
 					break;
 			}
 			option = showMenu();
@@ -56,10 +52,9 @@ public class MainApp {
 			System.out.println("\tMenu");
 			System.out.println("==========");
 			System.out.println("1. - Add new User");
-			System.out.println("2. - Modify existing User");
-			System.out.println("3. - Delete User (TODO)");
-			System.out.println("4. - Add new Curs");
-			System.out.println("5. - Delete Curs (TODO)");
+			System.out.println("2. - Delete User (TODO)");
+			System.out.println("3. - Add new Curs");
+			System.out.println("4. - Delete Curs (TODO)");
 			System.out.println("0. - Exit");
 			try{
 				String option = buffer.readLine();	
@@ -97,19 +92,29 @@ public class MainApp {
 				readingError = true;
 			}
 		} while(readingError);
-		return new User(id, name, surname, age);
+		User u = new User(id, name, surname, age);
+		return u;
 	}
-
-	public static void modifyUser(User user){
-		System.out.println("===== Current user data =====");
-		System.out.println(user.toString());
-		System.out.println("===== Insert new data =====");
-		User newOne = addNewUser();
-		user.setId(newOne.getId());
-		user.setName(newOne.getName());
-		user.setSurname(newOne.getSurname());
-		user.setAge(newOne.getAge());
-		System.out.println("Changes done!");
+	
+	public static Curso addNewCurso() {
+		int id =  -1;
+		String name = "";
+		boolean readingError;
+		do {
+			try{
+				BufferedReader buffer = new BufferedReader(new InputStreamReader(System.in));
+				System.out.println("id:");
+				id = Integer.parseInt(buffer.readLine());
+				System.out.println("Name:");
+				name = buffer.readLine();
+				readingError = false;
+			}catch(Exception e){
+				System.out.println("Incorrect value!!");
+				readingError = true;
+			}
+		} while(readingError);
+		Curso c = new Curso(id, name);
+		return c;
 	}
 
 }
