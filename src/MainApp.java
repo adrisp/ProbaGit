@@ -34,6 +34,11 @@ public class MainApp {
 						arrayCurso[i] = null;
 					}
 					break;
+				case 3:	
+					for(int i = 0 ; i < numUsers; i++){
+						arrayUsers[i] = null;
+					}
+					break;
 			}
 			option = showMenu();
 		}
