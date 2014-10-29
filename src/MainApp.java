@@ -32,6 +32,12 @@ public class MainApp {
 						}
 					}while(readingError);
 					break;
+				case 3:
+					break;
+				case 4: System.out.println("Curso añadido");
+					break;
+				case 5:	System.out.println("Curso borrado");
+					break;
 			}
 			option = showMenu();
 		}
@@ -52,6 +58,8 @@ public class MainApp {
 			System.out.println("1. - Add new User");
 			System.out.println("2. - Modify existing User");
 			System.out.println("3. - Delete User (TODO)");
+			System.out.println("4. - Add new Curs");
+			System.out.println("5. - Delete Curs (TODO)");
 			System.out.println("0. - Exit");
 			try{
 				String option = buffer.readLine();	
