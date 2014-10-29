@@ -18,6 +18,23 @@ public class User {
 	public void setAge(int age){
 		this.age = age;
 	}
+ 
+	public String getSurname() {
+	    return this.surname;
+	}
+	
+	public void setSurname(String surname) {
+	    this.surname = surname;
+	}
+	
+	public String getName() {
+	    return this.name;
+	}
+	
+	
+	public void setName(String name) {
+	    this.name = name;
+	}
 	
 	public int getId() {
 	    return this.id;
